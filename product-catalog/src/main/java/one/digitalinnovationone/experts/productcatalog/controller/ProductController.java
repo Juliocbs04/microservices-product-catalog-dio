@@ -8,18 +8,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping(value = "/product")
 public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
 
     @PostMapping
-    public Product create(@RequestBody Product p){
-        return productRepository.save(p);
+    public Product create(@RequestBody Product product){
+        return productRepository.save(product);
     }
     @RequestMapping("/{id}")
-    public Optional<Product> findByID(@PathVariable Long id){
+    public Optional<Product> findByID(@PathVariable Integer id){
         return productRepository.findById(id);
     }
+
+
+
 }
